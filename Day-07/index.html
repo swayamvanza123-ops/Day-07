@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventory Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            📦 Inventory
+        </div>
+
+        <nav>
+
+            <a href="#" class="active">
+                🏠 Dashboard
+            </a>
+
+            <a href="#products">
+                📋 Products
+            </a>
+
+            <a href="#categories">
+                📁 Categories
+            </a>
+
+            <a href="#vendors">
+                🚚 Vendors
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Inventory Management
+                </h1>
+
+                <p>
+                    Manage your products easily
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD CARDS ================= -->
+
+        <section class="dashboard-cards">
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Products
+                    </p>
+
+                    <h2 id="totalProducts">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Stock
+                    </p>
+
+                    <h2 id="totalStock">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <p>
+                        Low Stock
+                    </p>
+
+                    <h2 id="lowStock">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <p>
+                        Inventory Value
+                    </p>
+
+                    <h2 id="inventoryValue">
+                        ₹0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ADD PRODUCT ================= -->
+
+        <section class="form-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Add New Product
+                </h2>
+
+                <p>
+                    Add products to your inventory
+                </p>
+
+            </div>
+
+
+            <form id="productForm">
+
+                <div class="form-group">
+
+                    <label>
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Enter product name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select
+                        id="productCategory"
+                        required
+                    >
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                        <option value="Accessories">
+                            Accessories
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        placeholder="Enter price"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Stock
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productStock"
+                        placeholder="Enter stock"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="addProduct"
+                >
+                    ➕ Add Product
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= CATEGORIES ================= -->
+
+        <section
+            class="categories-section"
+            id="categories"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    Product Categories
+                </h2>
+
+                <p>
+                    Select a category to view its products
+                </p>
+
+            </div>
+
+
+            <div class="category-cards">
+
+
+                <!-- ELECTRONICS -->
+
+                <div
+                    class="category-card"
+                    data-category="Electronics"
+                >
+
+                    <div class="category-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Electronics
+                    </h3>
+
+                    <p id="electronicsCount">
+                        0 Products
+                    </p>
+
+                </div>
+
+
+                <!-- ACCESSORIES -->
+
+                <div
+                    class="category-card"
+                    data-category="Accessories"
+                >
+
+                    <div class="category-icon">
+                        🖱️
+                    </div>
+
+                    <h3>
+                        Accessories
+                    </h3>
+
+                    <p id="accessoriesCount">
+                        0 Products
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PRODUCTS ================= -->
+
+        <section
+            class="products-section"
+            id="products"
+        >
+
+            <div class="products-header">
+
+                <div>
+
+                    <h2>
+                        Products
+                    </h2>
+
+                    <p>
+                        Manage all your inventory products
+                    </p>
+
+                </div>
+
+
+                <div class="filters">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="🔍 Search Product..."
+                    >
+
+
+                    <select id="filterStatus">
+
+                        <option value="all">
+                            All Products
+                        </option>
+
+                        <option value="available">
+                            Available
+                        </option>
+
+                        <option value="low">
+                            Low Stock
+                        </option>
+
+                    </select>
+
+
+                    <button id="clearFilters">
+                        Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Product
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Price
+                            </th>
+
+                            <th>
+                                Stock
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="productTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= VENDORS ================= -->
+
+        <section
+            class="vendors-section"
+            id="vendors"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    Vendors
+                </h2>
+
+                <p>
+                    Vendor management section
+                </p>
+
+            </div>
+
+            <div class="vendor-box">
+
+                🚚
+                <span>
+                    Vendor management coming soon
+                </span>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- ================= EDIT MODAL ================= -->
+
+<div
+    id="editModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            id="closeModal"
+        >
+            &times;
+        </span>
+
+
+        <h2>
+            Edit Product
+        </h2>
+
+
+        <form id="editForm">
+
+            <input
+                type="hidden"
+                id="editId"
+            >
+
+
+            <div class="form-group">
+
+                <label>
+                    Product Name
+                </label>
+
+                <input
+                    type="text"
+                    id="editName"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Category
+                </label>
+
+                <select
+                    id="editCategory"
+                    required
+                >
+
+                    <option value="Electronics">
+                        Electronics
+                    </option>
+
+                    <option value="Accessories">
+                        Accessories
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Price
+                </label>
+
+                <input
+                    type="number"
+                    id="editPrice"
+                    min="0"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Stock
+                </label>
+
+                <input
+                    type="number"
+                    id="editStock"
+                    min="0"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit">
+                💾 Update Product
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
